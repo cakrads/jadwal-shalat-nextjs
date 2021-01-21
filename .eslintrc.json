@@ -18,6 +18,7 @@
   },
   "rules": {
     "react/react-in-jsx-scope": 0,
+    "@typescript-eslint/interface-name-prefix": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/explicit-member-accessibility": 0,
     "@typescript-eslint/indent": 0,
@@ -66,8 +67,8 @@
     "react/no-unknown-property": 2,
     "react/no-unused-state": 2,
     "react/prefer-es6-class": 2,
-    "react/prop-types": 2,
-    "react/require-default-props": 2,
+    "react/prop-types": 0,
+    "react/require-default-props": 0,
     "react/self-closing-comp": 2,
     "react/sort-comp": 2,
     "react/sort-prop-types": [2, { "ignoreCase": true }],
