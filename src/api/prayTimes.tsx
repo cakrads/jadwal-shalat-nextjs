@@ -1,6 +1,6 @@
 import prayTimes from '@libraries/prayTimes';
-import { date, text } from '@helpers/index';
-import { INextPrayTime } from '@interfaces/pray';
+import { DATE, text } from '@helpers/index';
+import { INextPrayTime, ITableSalat } from '@interfaces/pray';
 
 export const getPrayTimesByDate = (date): {} => {
   prayTimes.setMethod('KJP');
@@ -9,9 +9,9 @@ export const getPrayTimesByDate = (date): {} => {
 };
 
 export const getNextPrayTime = (): INextPrayTime => {
-  const today = date.today();
-  const tomorrow = date.addDay(1);
-  const now = date.now();
+  const today = DATE.today();
+  const tomorrow = DATE.addDay(1, false);
+  const now = DATE.now();
 
   const todayPrayTime = getPrayTimesByDate(today);
   const tomorrowPrayTime = getPrayTimesByDate(tomorrow);
@@ -20,8 +20,8 @@ export const getNextPrayTime = (): INextPrayTime => {
   const allKey = Object.keys(todayPrayTime);
   allKey.forEach((key, index) => {
     if (!todayPrayTime[allKey[index + 1]]) return;
-    const before = date.hourToTimestamp(todayPrayTime[key]);
-    const after = date.hourToTimestamp(todayPrayTime[allKey[index + 1]]);
+    const before = DATE.hourToTimestamp(todayPrayTime[key]);
+    const after = DATE.hourToTimestamp(todayPrayTime[allKey[index + 1]]);
     if (checkIsValueBetween(now, before, after))
       nextPrayTime = {[allKey[index + 1]]: todayPrayTime[allKey[index + 1]]};
   });
@@ -35,13 +35,36 @@ export const getNextPrayTime = (): INextPrayTime => {
   };
 };
 
+export const getSchedulePrayByDate = (date): ITableSalat => {
+
+  const todayPrayTime = getPrayTimesByDate(date);
+  const nextPrayTime = getNextPrayTime();
+
+  const allKey = Object.keys(todayPrayTime);
+  const schedule = allKey.map((key) => {
+    const isActive = nextPrayTime.time === todayPrayTime[key];
+    return {
+      isActive: isActive,
+      time: todayPrayTime[key],
+      title: text.capitalize(key),
+    };
+  });
+
+  const selectedDate = DATE.format('dddd, D MMMM YYYY', date);
+
+  return {
+    schedule,
+    selectedDate,
+  };
+};
+
 const checkIsValueBetween = (now, before, after) => {
   return before < now && now <= after;
 };
 
 export const getTimeleftToPray = (nextPrayTime: INextPrayTime) => {
-  const unixPrayTime = date.hourToTimestamp(nextPrayTime.time);
-  const timeLeft: string = date.howLongFromNow(unixPrayTime);
+  const unixPrayTime = DATE.hourToTimestamp(nextPrayTime.time);
+  const timeLeft: string = DATE.howLongFromNow(unixPrayTime);
   const tmp = timeLeft.split(' ');
   return `${tmp[1]} ${tmp[2]} menuju ${nextPrayTime.title}`;
 };

@@ -10,3 +10,14 @@ export interface INextPrayTime {
   title: string,
   time: string,
 }
+
+export interface ITableSalat {
+  selectedDate?: string,
+  schedule: Array<IScheduleSalat>,
+}
+
+export interface IScheduleSalat {
+    isActive: boolean,
+    time: string,
+    title: string,
+}

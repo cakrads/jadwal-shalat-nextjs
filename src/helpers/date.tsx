@@ -24,8 +24,14 @@ export const now = () => {
   return dayjs(today()).unix();
 };
 
-export const addDay = (value) => {
-  return dayjs(today()).add(value, 'day');
+export const addDay = (value, toDate = true) => {
+  const date = dayjs(today()).add(value, 'day');
+  return toDate ? date.toDate() : date;
+};
+
+export const minDay = (value, toDate = true) => {
+  const date = dayjs(today()).subtract(value, 'day');
+  return toDate ? date.toDate() : date;
 };
 
 export const format = (value, date: any = today()) => {

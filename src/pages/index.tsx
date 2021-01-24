@@ -1,7 +1,7 @@
 import MainLayout from '@components/template/MainLayout';
 import ShalatLocation from '@containers/ShalatLocation';
 import CardShalatContainer from '@containers/CardShalat';
-import TableShalat from '@components/organism/TableShalat';
+import TableShalat from '@containers/TableShalat';
 import { generateMeta } from '@helpers/index';
 import { getPrayTimesByDate, getNextPrayTime, getTimeleftToPray } from '@api/prayTimes';
 
