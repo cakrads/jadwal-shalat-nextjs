@@ -5,20 +5,20 @@ export const DB = {
 
 
 
-export const setStorage = (field, value, mode = 'window')=>{
+export const setStorage = (field, value, isBrowser = true)=>{
 
-  if (mode === 'window') {
+  if (typeof window !== 'undefined' && isBrowser) {
     localStorage.setItem(field, JSON.stringify(value));
-    return {success:true};
+    return { success: true };
   } else {
     return '';
   }
 
 };
 
-export const getStorage = async (field, mode = 'window') => {
+export const getStorage = async (field, isBrowser = true) => {
 
-  if (mode === 'window') {
+  if (typeof window !== 'undefined' && isBrowser) {
     return JSON.parse(localStorage.getItem(field));
   } else {
     // chrome.storage.sync.get(['calcMethod', 'coords'], ({ calcMethod, coords }) => {
@@ -27,7 +27,7 @@ export const getStorage = async (field, mode = 'window') => {
     //     coords,
     //   };
     // });
-    return localStorage.getItem(field);
+    return '';
   }
 
 };

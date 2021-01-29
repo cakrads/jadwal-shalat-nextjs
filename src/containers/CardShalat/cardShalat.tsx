@@ -1,25 +1,43 @@
+import React from 'react';
 import CardShalat from '@components/organism/CardShalat';
 import { ICardShalat } from '@interfaces/pray';
 import { DATE, hijrDate } from '@helpers/index';
+import { getNextPrayTime, getTimeleftToPray } from '@api/prayTimes';
 
-const Component = (props): JSX.Element => {
+const Component = (): JSX.Element => {
 
-  const { nextPrayTime, timeleftToPray } = props;
+  const DEFAULT = {
+    calcMethod:'',
+    shalat: {time:'', title:'', },
+    timeLeft: '',
+    today:'',
+    todayHijr:'',
+  };
+  const [data, setData] = React.useState<ICardShalat>(DEFAULT);
 
-  const calcMethod = 'Kemenag Jakarta Pusat, Indonesia';
-  const today = DATE.format('dddd, D MMMM YYYY');
-  const todayHijr = hijrDate.writeIslamicDate();
+  React.useEffect(() => {
+    initData();
+  }, []);
 
-  const generateProps: ICardShalat = {
-    calcMethod,
-    shalat: nextPrayTime,
-    timeLeft: timeleftToPray,
-    today,
-    todayHijr,
+  const initData = async () => {
+    const calcMethod = 'Kemenag Jakarta Pusat, Indonesia';
+    const today = DATE.format('dddd, D MMMM YYYY');
+    const todayHijr = hijrDate.writeIslamicDate();
+
+    const nextPrayTime = await getNextPrayTime();
+    const timeleftToPray = getTimeleftToPray(nextPrayTime);
+
+    setData({
+      calcMethod,
+      shalat: nextPrayTime,
+      timeLeft: timeleftToPray,
+      today,
+      todayHijr,
+    });
   };
 
   return (
-    <CardShalat {...generateProps}/>
+    <CardShalat {...data}/>
   );
 };
 

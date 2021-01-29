@@ -10,10 +10,14 @@ const Component = (): JSX.Element => {
   const [data, setData] = React.useState<ITableSalat>({schedule:[], selectedDate: '', });
 
   React.useEffect(() => {
-    const usedDate = DATE.addDay(dateIndex);
-    const data: ITableSalat = getSchedulePrayByDate(usedDate);
-    setData(data);
+    getData(dateIndex);
   }, [dateIndex]);
+
+  const getData = async (value) => {
+    const usedDate = DATE.addDay(value);
+    const data: ITableSalat = await getSchedulePrayByDate(usedDate);
+    setData(data);
+  };
 
   const changeIndex = (index) => () => {
     setDateIndex(index);
