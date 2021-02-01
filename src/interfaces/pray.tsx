@@ -12,6 +12,8 @@ export interface INextPrayTime {
 }
 
 export interface ITableSalat {
+  dateIndex?: number,
+  onChangeIndex?: (string) => () => void,
   selectedDate?: string,
   schedule: Array<IScheduleSalat>,
 }

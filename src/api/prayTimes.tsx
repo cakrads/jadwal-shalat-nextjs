@@ -56,14 +56,14 @@ export const getNextPrayTime = async (): Promise<INextPrayTime> => {
   }
 };
 
-export const getSchedulePrayByDate = async (date): Promise<ITableSalat> => {
+export const getSchedulePrayByDate = async (date, isToday): Promise<ITableSalat> => {
 
   const todayPrayTime = await getPrayTimesByDate(date);
   const nextPrayTime = await getNextPrayTime();
 
   const allKey = Object.keys(todayPrayTime);
   const schedule = allKey.map((key) => {
-    const isActive = nextPrayTime.time === todayPrayTime[key];
+    const isActive = nextPrayTime.time === todayPrayTime[key] && isToday;
     return {
       isActive: isActive,
       time: todayPrayTime[key],

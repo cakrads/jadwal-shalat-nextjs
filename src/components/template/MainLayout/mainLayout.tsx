@@ -29,7 +29,7 @@ export const MainLayout: React.FC = (props: IMainLayout) => {
           }}/>
 
         <div className="container antialiased">
-          <main className="max-w-lg mx-auto p-6 bg-white bg-glass">
+          <main className="max-w-lg mx-auto p-6 bg-white bg-glass pb-0">
             <Header />
 
             <section>

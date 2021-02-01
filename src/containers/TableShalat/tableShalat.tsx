@@ -4,12 +4,7 @@ import TableShalat from '@components/organism/TableShalat';
 
 const Component = (): JSX.Element => {
 
-  const { _changeIndex, data, } = useAction();
-
-  const generateProps = {
-    ...data,
-    onChangeIndex: _changeIndex
-  };
+  const generateProps = useAction();
 
   return (
     <TableShalat {...generateProps} />

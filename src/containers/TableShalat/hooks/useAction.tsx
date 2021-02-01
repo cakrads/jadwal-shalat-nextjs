@@ -26,16 +26,22 @@ export default function useAction() {
 
   const getData = async (value) => {
     const usedDate = DATE.addDay(value);
-    const data: ITableSalat = await getSchedulePrayByDate(usedDate);
+    const isToday = !dateIndex;
+    const data: ITableSalat = await getSchedulePrayByDate(usedDate, isToday);
     setData(data);
   };
 
-  const _changeIndex = (index) => () => {
-    setDateIndex(index);
+  const _changeIndex = (type) => () => {
+    const types = {
+      'add': dateIndex + 1,
+      'dec': dateIndex - 1,
+    };
+    setDateIndex(types[type]);
   };
 
   return {
-    _changeIndex,
-    data,
+    ...data,
+    dateIndex,
+    onChangeIndex: _changeIndex,
   };
 }

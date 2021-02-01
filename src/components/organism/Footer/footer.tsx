@@ -1,17 +1,13 @@
 
 const Footer = (): JSX.Element => {
   return (
-    <footer className="w-full h-24 flex justify-center items-center">
-      <a
-        className="container flex justify-center items-center border-t h-24"
-        href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        Powered by{' '}
-        <img alt="Vercel Logo" className="ml-2 h-4" src="/vercel.svg" />
-        <b>PrayTimes.org</b>
-      </a>
+    <footer className="w-full h-24 flex flex-col justify-center items-center border-t">
+      <p>
+      Created by: <a className="font-bold " href="https://www.instagram.com/cakrads/" rel="noreferrer" target="_blank">@cakrads</a>
+      </p>
+      <p>
+      Find the project in <a className="font-bold underline" href="https://github.com/cakrads/jadwal-shalat-nextjs" rel="noreferrer" target="_blank">github</a><br />
+      </p>
     </footer>
   );
 };
