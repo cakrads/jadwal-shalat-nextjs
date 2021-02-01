@@ -16,7 +16,7 @@ const CardShalat = (props: ICardShalat): JSX.Element => {
       <footer>
         <div className="text-xs text-gray-700">
           Menurut: <br />
-          {props.calcMethod}
+          {props.calcMethod.title}
           {/* · <a href="/ubah">Ubah</a> */}
         </div>
       </footer>
@@ -27,7 +27,7 @@ const CardShalat = (props: ICardShalat): JSX.Element => {
 export default CardShalat;
 
 CardShalat.defaultProps = {
-  calcMethod: 'Kemenag Jakarta Pusat, Indonesia',
+  calcMethod: {},
   shalat: {
     time: '00:00',
     timeLeft: '',

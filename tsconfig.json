@@ -18,6 +18,7 @@
       "@api/*": ["src/api/*"],
       "@database/*": ["src/database/*"],
       "@components/*": ["src/components/*"],
+      "@context/*": ["src/context/*"],
       "@configs/*": ["src/configs/*"],
       "@containers/*": ["src/containers/*"],
       "@helpers/*": ["src/helpers/*"],

@@ -1,5 +1,5 @@
 export interface ICardShalat {
-  calcMethod?: string,
+  calcMethod?: ICalcMethod,
   shalat: INextPrayTime,
   timeLeft: string,
   today?: string,
@@ -17,7 +17,12 @@ export interface ITableSalat {
 }
 
 export interface IScheduleSalat {
-    isActive: boolean,
-    time: string,
-    title: string,
+  isActive: boolean,
+  time: string,
+  title: string,
+}
+
+export interface ICalcMethod {
+  title?: string,
+  value?: string,
 }

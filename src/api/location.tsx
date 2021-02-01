@@ -2,8 +2,8 @@ import { STORAGE } from '@helpers/index';
 import CITIES from './../database/cities-indonesia.json';
 
 interface ILocation {
-  coords?: [],
-  value?: string,
+  coords?: [any, any],
+  title: string,
 }
 
 interface IGetLocation {
@@ -19,7 +19,7 @@ export const getLocationFromStorage = async (): Promise<IGetLocation> => {
   return {
     data: {
       coords: data?.coords || [],
-      value: data?.value || '',
+      title: data?.value || '',
     },
     message: status ? 'sukses' : 'Silahkan Klik "PILIH LOKASI ANDA"',
     success: status,
@@ -27,9 +27,9 @@ export const getLocationFromStorage = async (): Promise<IGetLocation> => {
 };
 
 export const getLocationFromGeoLocation = async (): Promise<IGetLocation>=> {
+  let location: ILocation = {coords:[0, 0], title:''};
   let status = false;
   let message = '';
-  let location = {};
 
   if (navigator.geolocation) {
     try {
@@ -74,8 +74,8 @@ export const getGeoLocation = (options = {}) => {
   });
 };
 
-export const handlePosition = async (position)=> {
-  let location = {};
+export const handlePosition = async (position): Promise<IGetLocation> => {
+  let location: ILocation = {coords:[0, 0], title:''};
   let message = '';
   let status = false;
 
@@ -87,7 +87,7 @@ export const handlePosition = async (position)=> {
     const city = response.data;
     location = {
       coords: coords,
-      value: city,
+      title: city,
     };
     await STORAGE.setStorage(STORAGE.DB.LOCATION, location);
     status = true;

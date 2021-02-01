@@ -1,17 +1,20 @@
 import prayTimes from '@libraries/prayTimes';
-import { DATE, text, STORAGE } from '@helpers/index';
+import { getLocationFromStorage } from './location';
+import { DATE, text } from '@helpers/index';
+import { getCalcMethodeFromStorage } from '@api/calcMethod';
 import { INextPrayTime, ITableSalat } from '@interfaces/pray';
 
 export const getPrayTimesByDate = async (date): Promise<{}> => {
   try {
-    const calcMethod = await STORAGE.getStorage(STORAGE.DB.CALC_MEHTHOD);
-    const location = await STORAGE.getStorage(STORAGE.DB.LOCATION);
+    const calcMethod = await getCalcMethodeFromStorage();
+    const location = await getLocationFromStorage();
 
-    if (calcMethod === '')
+    if (calcMethod.data.value === '')
       throw new Error('No Data in Local Storage');
 
-    prayTimes.setMethod(calcMethod);
-    const times = prayTimes.getTimes(date, location?.coords || [], +7);
+    prayTimes.setMethod(calcMethod.data?.value);
+    const times = prayTimes.getTimes(date, location.data?.coords || [], +7);
+
     return times;
   } catch (error) {
     return error;
@@ -84,5 +87,18 @@ export const getTimeleftToPray = (nextPrayTime: INextPrayTime) => {
   const unixPrayTime = DATE.hourToTimestamp(nextPrayTime.time);
   const timeLeft: string = DATE.howLongFromNow(unixPrayTime);
   const tmp = timeLeft.split(' ');
-  return `${tmp[1]} ${tmp[2]} menuju ${nextPrayTime.title}`;
+  return `${tmp[1]} ${tmp[2] || ''} menuju ${nextPrayTime.title}`;
+};
+
+export const initialPrayTimeState = async () => {
+
+  const calcMethod = await getCalcMethodeFromStorage();
+  const location = await getLocationFromStorage();
+  const nextPrayTime = await getNextPrayTime();
+
+  return {
+    calcMethod: calcMethod.data,
+    location: location.data,
+    nextPrayTime,
+  };
 };

@@ -1,23 +1,37 @@
 import { STORAGE } from '@helpers/index';
 import CALC_MEHTHOD from './../database/calcution-method.json';
+import { ICalcMethod } from '@interfaces/pray';
+
+interface IGetLocation {
+  data: ICalcMethod,
+  message: string,
+  success: boolean,
+}
 
 export const getAllCalcMethod = ()=> {
   return CALC_MEHTHOD;
 };
 
-export const getCalcMethod = async (): Promise<any> => {
+export const getCalcMethodeFromStorage = async (): Promise<IGetLocation> => {
+  let calcMethod: ICalcMethod = { title: '', value: '' };
+  const message = '';
+  const status = false;
+
   const data: any = await STORAGE.getStorage(STORAGE.DB.CALC_MEHTHOD);
-  const defaultMethod = CALC_MEHTHOD[0].text;
-  let calcMethod = '';
 
   if (!data || data === '') {
+    const defaultMethod = CALC_MEHTHOD[0];
     calcMethod = defaultMethod;
-    setCalcMethod(defaultMethod);
+    await setCalcMethod(defaultMethod);
   } else {
     calcMethod = data;
   }
 
-  return calcMethod;
+  return {
+    data: calcMethod,
+    message: message,
+    success: status,
+  };
 };
 
 export const setCalcMethod = async (value)=> {

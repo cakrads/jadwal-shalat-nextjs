@@ -1,34 +1,34 @@
 [
   {
     "value": "KJP",
-    "text": "Kemenag Jakarta Pusat, Indonesia"
+    "title": "Kemenag Jakarta Pusat, Indonesia"
   },
   {
     "value": "MWL",
-    "text": "Muslim World League"
+    "title": "Muslim World League"
   },
   {
     "value": "ISNA",
-    "text": "Islamic Society of North America (ISNA)"
+    "title": "Islamic Society of North America (ISNA)"
   },
   {
     "value": "Egypt",
-    "text": "Egyptian General Authority of Survey"
+    "title": "Egyptian General Authority of Survey"
   },
   {
     "value": "Makkah",
-    "text": "Umm Al-Qura University, Makkah"
+    "title": "Umm Al-Qura University, Makkah"
   },
   {
     "value": "Karachi",
-    "text": "University of Islamic Sciences, Karachi"
+    "title": "University of Islamic Sciences, Karachi"
   },
   {
     "value": "Tehran",
-    "text": "Institute of Geophysics, University of Tehran"
+    "title": "Institute of Geophysics, University of Tehran"
   },
   {
     "value": "Jafari",
-    "text": "Shia Ithna-Ashari, Leva Institute, Qum"
+    "title": "Shia Ithna-Ashari, Leva Institute, Qum"
   }
 ]
