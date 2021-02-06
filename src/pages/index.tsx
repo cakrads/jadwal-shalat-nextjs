@@ -1,15 +1,15 @@
 import MainLayout from '@components/template/MainLayout';
-import ShalatLocation from '@containers/ShalatLocation';
-import CardShalatContainer from '@containers/CardShalat';
-import TableShalat from '@containers/TableShalat';
+import ShalatLocation from '@containers/PrayLocation';
+import ShalatCardContainer from '@containers/PrayCard';
+import ShalatTable from '@containers/PrayTable';
 import { generateMeta } from '@helpers/index';
 
 const Home = (props: any): JSX.Element => {
   return (
     <MainLayout {...props}>
       <ShalatLocation />
-      <CardShalatContainer />
-      <TableShalat />
+      <ShalatCardContainer />
+      <ShalatTable />
     </MainLayout>
   );
 };

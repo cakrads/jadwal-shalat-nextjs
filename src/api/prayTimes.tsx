@@ -2,7 +2,7 @@ import prayTimes from '@libraries/prayTimes';
 import { getLocationFromStorage } from './location';
 import { DATE, text } from '@helpers/index';
 import { getCalcMethodeFromStorage } from '@api/calcMethod';
-import { INextPrayTime, ITableSalat } from '@interfaces/pray';
+import { INextPrayTime, IPrayTable } from '@interfaces/pray';
 
 export const getPrayTimesByDate = async (date): Promise<{}> => {
   try {
@@ -56,7 +56,7 @@ export const getNextPrayTime = async (): Promise<INextPrayTime> => {
   }
 };
 
-export const getSchedulePrayByDate = async (date, isToday): Promise<ITableSalat> => {
+export const getSchedulePrayByDate = async (date, isToday): Promise<IPrayTable> => {
 
   const todayPrayTime = await getPrayTimesByDate(date);
   const nextPrayTime = await getNextPrayTime();
@@ -94,6 +94,7 @@ export const initialPrayTimeState = async () => {
 
   const calcMethod = await getCalcMethodeFromStorage();
   const location = await getLocationFromStorage();
+  console.log('location', location);
   const nextPrayTime = await getNextPrayTime();
 
   return {

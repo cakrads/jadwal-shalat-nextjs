@@ -1,13 +1,13 @@
 import React from 'react';
 import useAction from './hooks/useAction';
-import TableShalat from '@components/organism/TableShalat';
+import PrayTable from '@components/organism/PrayTable';
 
 const Component = (): JSX.Element => {
 
   const generateProps = useAction();
 
   return (
-    <TableShalat {...generateProps} />
+    <PrayTable {...generateProps} />
   );
 };
 

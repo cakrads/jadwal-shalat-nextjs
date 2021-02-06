@@ -1,9 +1,9 @@
 import Card from '@components/atomic/Card';
 import ListItem from '@components/molecules/ListItem';
 import Icon from '@components/atomic/Icon';
-import { ITableSalat } from '@interfaces/pray';
+import { IPrayTable } from '@interfaces/pray';
 
-const TableSalat = (props: ITableSalat): JSX.Element => {
+const PrayTable = (props: IPrayTable): JSX.Element => {
 
   const { dateIndex, selectedDate, schedule, onChangeIndex } = props;
 
@@ -52,9 +52,9 @@ const TableSalat = (props: ITableSalat): JSX.Element => {
   );
 };
 
-export default TableSalat;
+export default PrayTable;
 
-TableSalat.defaultProps = {
+PrayTable.defaultProps = {
   dateIndex: 0,
   onChangeIndex: () => () => (true),
   schedule: [],

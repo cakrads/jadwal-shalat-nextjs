@@ -31,7 +31,11 @@ const SubHeader = (): JSX.Element => {
 
   return (
     <div className="flex space-x-4 items-center justify-between mb-3 h-10">
-      {!location?.title || location?.title === '' ? <LocationMiss/> : <LocationFound/>}
+      {
+        !location?.title || location?.title === '' || location?.coords?.length === 0
+          ? <LocationMiss/>
+          : <LocationFound/>
+      }
     </div>
   );
 };

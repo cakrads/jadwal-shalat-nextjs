@@ -1,7 +1,7 @@
 import Card from '@components/atomic/Card';
-import { ICardShalat } from '@interfaces/pray';
+import { IPrayCard } from '@interfaces/pray';
 
-const CardShalat = (props: ICardShalat): JSX.Element => {
+const PrayCard = (props: IPrayCard): JSX.Element => {
   return (
     <Card className="mb-5">
       <header className="flex justify-between mb-3">
@@ -9,8 +9,8 @@ const CardShalat = (props: ICardShalat): JSX.Element => {
         <div className="text-sm text-right">{props.todayHijr}</div>
       </header>
       <main className="text-center mb-8">
-        <b>{props.shalat?.title}</b><br />
-        <b className="text-4xl">{props.shalat?.time}</b><br />
+        <b>{props.pray?.title}</b><br />
+        <b className="text-4xl">{props.pray?.time}</b><br />
         <span className="text-sm text-gray-700">{props.timeLeft}</span>
       </main>
       <footer>
@@ -24,11 +24,11 @@ const CardShalat = (props: ICardShalat): JSX.Element => {
   );
 };
 
-export default CardShalat;
+export default PrayCard;
 
-CardShalat.defaultProps = {
+PrayCard.defaultProps = {
   calcMethod: {},
-  shalat: {
+  pray: {
     time: '00:00',
     timeLeft: '',
     title: '-----',

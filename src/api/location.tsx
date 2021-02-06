@@ -19,7 +19,7 @@ export const getLocationFromStorage = async (): Promise<IGetLocation> => {
   return {
     data: {
       coords: data?.coords || [],
-      title: data?.value || '',
+      title: data?.title || '',
     },
     message: status ? 'sukses' : 'Silahkan Klik "PILIH LOKASI ANDA"',
     success: status,

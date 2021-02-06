@@ -1,6 +1,6 @@
-export interface ICardShalat {
+export interface IPrayCard {
   calcMethod?: ICalcMethod,
-  shalat: INextPrayTime,
+  pray: INextPrayTime,
   timeLeft: string,
   today?: string,
   todayHijr?: string,
@@ -11,14 +11,14 @@ export interface INextPrayTime {
   time: string,
 }
 
-export interface ITableSalat {
+export interface IPrayTable {
   dateIndex?: number,
   onChangeIndex?: (string) => () => void,
   selectedDate?: string,
-  schedule: Array<IScheduleSalat>,
+  schedule: Array<IPraySchedule>,
 }
 
-export interface IScheduleSalat {
+export interface IPraySchedule {
   isActive: boolean,
   time: string,
   title: string,

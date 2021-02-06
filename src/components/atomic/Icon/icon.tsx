@@ -27,7 +27,7 @@ const Icon = (props: IIcon): JSX.Element => {
   };
 
   return (
-    <span className={`${color} ${iconSize[size]} inline-block ${className}`} {...props}>
+    <span {...props} className={`${color} ${iconSize[size]} inline-block ${className}`}>
       {ICONS[icon]()}
     </span>
   );

@@ -13,7 +13,7 @@ export default function useAction() {
       name:'',
       value: '',
     },
-    shalat: {time:'', title:'', },
+    pray: {time:'', title:'', },
     timeLeft: '',
     today:'',
     todayHijr:'',
@@ -32,7 +32,7 @@ export default function useAction() {
 
     setData({
       calcMethod: prayTime.calcMethod,
-      shalat: prayTime.nextPrayTime,
+      pray: prayTime.nextPrayTime,
       timeLeft: timeleftToPray,
       today,
       todayHijr,
