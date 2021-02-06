@@ -6,9 +6,9 @@ import { initialPrayTimeState } from '@api/prayTimes';
 
 
 export default function useAction() {
-  const [globalState, dispatch] = useContext(AppContext);
+  const { globalState, dispatch } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(false);
-  const { prayTime = {} } = globalState;
+  const { prayTime } = globalState;
   const { location = {} } = prayTime;
 
   React.useEffect(()=> {

@@ -94,7 +94,6 @@ export const initialPrayTimeState = async () => {
 
   const calcMethod = await getCalcMethodeFromStorage();
   const location = await getLocationFromStorage();
-  console.log('location', location);
   const nextPrayTime = await getNextPrayTime();
 
   return {

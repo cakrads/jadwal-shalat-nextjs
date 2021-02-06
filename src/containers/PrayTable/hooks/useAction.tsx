@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
 import { AppContext } from '@context/store';
-import { ITableSalat } from '@interfaces/pray';
+import { IPrayTable } from '@interfaces/pray';
 import { getSchedulePrayByDate } from '@api/prayTimes';
 import { DATE } from '@helpers/index';
 
 
 export default function useAction() {
-  const [ globalState ] = useContext(AppContext);
+  const { globalState } = useContext(AppContext);
   const { prayTime = {} } = globalState;
 
   const [dateIndex, setDateIndex] = React.useState(0);
-  const [data, setData] = React.useState<ITableSalat>({schedule:[], selectedDate: '', });
+  const [data, setData] = React.useState<IPrayTable>({schedule:[], selectedDate: '', });
 
   React.useEffect(() => {
     if (dateIndex === 0)
@@ -27,7 +27,7 @@ export default function useAction() {
   const getData = async (value) => {
     const usedDate = DATE.addDay(value);
     const isToday = !dateIndex;
-    const data: ITableSalat = await getSchedulePrayByDate(usedDate, isToday);
+    const data: IPrayTable = await getSchedulePrayByDate(usedDate, isToday);
     setData(data);
   };
 

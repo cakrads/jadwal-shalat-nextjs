@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { AppContext } from '@context/store';
 import { getTimeleftToPray, } from '@api/prayTimes';
-import { ICardShalat } from '@interfaces/pray';
+import { IPrayCard } from '@interfaces/pray';
 import { DATE, hijrDate } from '@helpers/index';
 
 export default function useAction() {
-  const [globalState] = useContext(AppContext);
+  const { globalState } = useContext(AppContext);
   const { prayTime = {} } = globalState;
 
   const DEFAULT = {
@@ -18,7 +18,7 @@ export default function useAction() {
     today:'',
     todayHijr:'',
   };
-  const [data, setData] = useState<ICardShalat>(DEFAULT);
+  const [data, setData] = useState<IPrayCard>(DEFAULT);
 
   React.useEffect(() => {
     initPrayTime();

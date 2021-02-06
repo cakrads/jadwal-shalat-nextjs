@@ -3,8 +3,8 @@ import { AppContext } from '@context/store';
 import { CONFIG_ACTIONS, BOTTOM_SHEET_TYPE } from '@context/actionsConst';
 
 export default function useRepository() {
-  const [ globalState, dispatch ] = useContext(AppContext);
-  const { config = {} } = globalState;
+  const { globalState, dispatch } = useContext(AppContext);
+  const { config } = globalState;
   const { bottomSheet = '' } = config;
 
   const isOpen = bottomSheet !== '';

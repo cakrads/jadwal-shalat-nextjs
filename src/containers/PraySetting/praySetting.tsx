@@ -1,13 +1,13 @@
 import React from 'react';
-import CardShalat from '@components/organism/PrayCard';
 import useAction from './hooks/useAction';
+import PrayTable from '@components/organism/PrayTable';
 
 const Component = (): JSX.Element => {
 
-  const { data } = useAction();
+  const generateProps = useAction();
 
   return (
-    <CardShalat {...data}/>
+    <PrayTable {...generateProps} />
   );
 };
 

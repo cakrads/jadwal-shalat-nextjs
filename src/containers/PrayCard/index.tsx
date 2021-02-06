@@ -1,1 +1,1 @@
-export { default } from './shalatCard';
+export { default } from './prayCard';

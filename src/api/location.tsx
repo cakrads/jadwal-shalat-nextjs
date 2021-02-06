@@ -1,10 +1,6 @@
 import { STORAGE } from '@helpers/index';
 import CITIES from './../database/cities-indonesia.json';
-
-interface ILocation {
-  coords?: [any, any],
-  title: string,
-}
+import { ILocation } from '@interfaces/pray';
 
 interface IGetLocation {
   data: ILocation,
@@ -27,7 +23,7 @@ export const getLocationFromStorage = async (): Promise<IGetLocation> => {
 };
 
 export const getLocationFromGeoLocation = async (): Promise<IGetLocation>=> {
-  let location: ILocation = {coords:[0, 0], title:''};
+  let location: ILocation = { coords: [0, 0], title: ''};
   let status = false;
   let message = '';
 

@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Header from '@containers/Header';
 import Footer from '@components/organism/Footer';
 import { PrimaryBackground } from '@components/atomic/Background';
-import { IMainLayout } from '@interfaces/template';
+import { IMainLayout } from '@interfaces/config';
 import BottomSheet from '@containers/BottomSheet';
 
 

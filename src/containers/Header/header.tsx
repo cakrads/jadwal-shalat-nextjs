@@ -5,8 +5,8 @@ import Icon from '@components/atomic/Icon';
 import { CONFIG_ACTIONS } from '@context/actionsConst';
 
 const Header = (): JSX.Element => {
-  const [ globalState, dispatch ] = useContext(AppContext);
-  const { config = {} } = globalState;
+  const { globalState, dispatch } = useContext(AppContext);
+  const { config } = globalState;
   const { bottomSheet = '' } = config;
 
   const onOpen = () => {

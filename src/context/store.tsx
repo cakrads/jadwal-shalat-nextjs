@@ -1,18 +1,21 @@
 import React, { useReducer } from 'react';
 import Reducer, { initailGlobalState } from './reducers/index';
+import { IGlobalContext } from '@interfaces/config';
 
-export const AppContext = React.createContext([]);
+const initUseContext = { dispatch: ()=> ({ }), globalState: initailGlobalState };
+
+export const AppContext = React.createContext<IGlobalContext>(initUseContext);
 
 const Store = ({children})=> {
 
   const [state, dispatch] = useReducer(Reducer, initailGlobalState);
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     console.log('globalState', state);
   }, [state]);
 
   return (
-    <AppContext.Provider value={[state, dispatch]}>
+    <AppContext.Provider value={{ dispatch, globalState: state }}>
       {children}
     </AppContext.Provider>
   );

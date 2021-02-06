@@ -1,28 +1,28 @@
-pages
-  template(layout)
+pages>
+  template(layout)>
 
-    containers
+    containers>
       > do hooks
-      organism
-        molecules
-          atomic
-          atomic
-        molecules
-      organism
+      organism>
+        molecules>
+          atomic/>
+          atomic/>
+        /molecules>
+      /organism>
       
-      organism
-        molecules
-          atomic
-          atomic
-        molecules
-      organism
-    /containers
+      organism>
+        molecules>
+          atomic/>
+          atomic/>
+        /molecules>
+      /organism>
+    /containers>
 
 
-    containers
+    containers>
     
     
     
-    containers
+    /containers>
 
-  template(layout)
+  /template(layout)>

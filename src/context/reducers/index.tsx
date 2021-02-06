@@ -1,17 +1,14 @@
 import prayTime, { initialPrayTime } from './prayTime';
-import theme, { initialTheme } from './theme';
 import config, { initialConfig } from './config';
 
 export const initailGlobalState = {
   config: {...initialConfig},
   prayTime: {...initialPrayTime},
-  theme: {...initialTheme},
 };
 
 const allReducers = {
   config,
   prayTime,
-  theme,
 };
 
 const combineReducers = (slices) => (state, action) =>

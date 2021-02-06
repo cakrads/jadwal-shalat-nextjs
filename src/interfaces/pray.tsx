@@ -28,3 +28,8 @@ export interface ICalcMethod {
   title?: string,
   value?: string,
 }
+
+export interface ILocation {
+  coords?: [any, any],
+  title: string,
+}
