@@ -29,7 +29,8 @@
     "dayjs": "^1.10.3",
     "next": "latest",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-swipeable-bottom-sheet": "^1.1.2"
   },
   "devDependencies": {
     "@testing-library/react": "^10.0.1",

@@ -1,8 +1,10 @@
 import React, { Fragment, } from 'react';
 import Head from 'next/head';
-import Header from '@components/organism/Header';
+import Header from '@containers/Header';
 import Footer from '@components/organism/Footer';
+import { PrimaryBackground } from '@components/atomic/Background';
 import { IMainLayout } from '@interfaces/template';
+import BottomSheet from '@containers/BottomSheet';
 
 
 export const MainLayout: React.FC = (props: IMainLayout) => {
@@ -21,13 +23,7 @@ export const MainLayout: React.FC = (props: IMainLayout) => {
       </Head>
 
       <div className="overflow-hidden relative">
-        <div className="w-full absolute"
-          style={{
-            background: 'radial-gradient(circle,#b43ab3 40%,#427bd5 52%,#37dbff 68%)',
-            minHeight: '280vh',
-            zIndex: -1,
-          }}/>
-
+        <PrimaryBackground />
         <div className="container antialiased">
           <main className="max-w-lg mx-auto p-6 bg-white bg-glass pb-0">
             <Header />
@@ -40,7 +36,7 @@ export const MainLayout: React.FC = (props: IMainLayout) => {
           </main>
         </div>
       </div>
-
+      <BottomSheet />
     </Fragment>
   );
 };

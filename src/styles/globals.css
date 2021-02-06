@@ -21,6 +21,14 @@
     -webkit-backdrop-filter: blur( 4px );
     border: none !important;
   }
+
+  .bg-gradient-primary {
+    background: radial-gradient(circle, #b43ab3 40%, #427bd5 52%, #37dbff 68%);
+  }
+
+  .bg-gradient-secondary {
+    background: radial-gradient(circle, #b48ab3 40%, #a9bbd5 52%, #e2fbff 68%);
+  }
 }
 
 

@@ -30,3 +30,11 @@ export const CHEVRON_RIGHT = ()=> {
     </svg>
   );
 };
+
+export const DRAGABLE_ICON = ()=> {
+  return (
+    <svg fill="none" stroke="currentColor" viewBox="0 0 54 10" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50  4H4" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" />
+    </svg>
+  );
+};
