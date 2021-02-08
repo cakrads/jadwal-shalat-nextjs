@@ -36,10 +36,13 @@ const BottomSheet = (props: IBottomSheet): JSX.Element => {
       overlayStyle={{ background:'none' }}
       topShadow={topShadow}
     >
-      <div className={`overflow-hidden relative ${roundedTop}`} style={{ minHeight }}>
+      <div
+        className={`overflow-hidden relative max-w-lg mx-auto ${roundedTop}`}
+        style={{ minHeight }}
+      >
         <SecondaryBackground className={roundedTop}/>
-        <div className={`container bg-glass p-3 pt-1 ${roundedTop}`} style={{ minHeight }}>
-          <header className="text-center mb-3 leading-4">
+        <div className={`container bg-glass p-5 pt-1 ${roundedTop}`} style={{ minHeight }}>
+          <header className="text-center mb-5 leading-4">
             <Icon color={'text-blue-400'} icon="DRAGABLE_ICON" size={'sm-long'} />
           </header>
           <main>

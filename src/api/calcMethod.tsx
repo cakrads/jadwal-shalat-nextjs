@@ -1,5 +1,5 @@
 import { STORAGE } from '@helpers/index';
-import CALC_MEHTHOD from './../database/calcution-method.json';
+import CALC_MEHTHOD from '@database/calcution-method.json';
 import { ICalcMethod } from '@interfaces/pray';
 
 interface IGetLocation {
@@ -22,7 +22,7 @@ export const getCalcMethodeFromStorage = async (): Promise<IGetLocation> => {
   if (!data || data === '') {
     const defaultMethod = CALC_MEHTHOD[0];
     calcMethod = defaultMethod;
-    await setCalcMethod(defaultMethod);
+    await setCalcMethodToLocalStorage(defaultMethod);
   } else {
     calcMethod = data;
   }
@@ -34,6 +34,11 @@ export const getCalcMethodeFromStorage = async (): Promise<IGetLocation> => {
   };
 };
 
-export const setCalcMethod = async (value)=> {
+export const setDataCalcMethod = async (value: string) => {
+  const calcMethod = CALC_MEHTHOD.find(item => value === item.value);
+  await setCalcMethodToLocalStorage(calcMethod);
+};
+
+export const setCalcMethodToLocalStorage = async (value: ICalcMethod) => {
   return await STORAGE.setStorage(STORAGE.DB.CALC_MEHTHOD, value);
 };

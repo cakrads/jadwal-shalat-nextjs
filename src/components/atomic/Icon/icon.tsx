@@ -5,6 +5,7 @@ interface IIcon{
   className?: string,
   icon?: string,
   size?: string,
+  onClick?: () => any
 }
 
 const Icon = (props: IIcon): JSX.Element => {
