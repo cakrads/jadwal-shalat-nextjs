@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { AppContext } from '@context/store';
-import { PRAY_TIME_ACTIONS } from '@context/actionsConst';
-import { CONFIG_ACTIONS } from '@context/actionsConst';
+import { PRAY_TIME_ACTIONS, CONFIG_ACTIONS } from '@context/actionsConst';
 import { getLocationFromGeoLocation } from '@api/location';
 import { initialPrayTimeState } from '@api/prayTimes';
 
