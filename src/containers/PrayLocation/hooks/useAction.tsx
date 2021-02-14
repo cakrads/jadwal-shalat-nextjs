@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AppContext } from '@context/store';
 import { PRAY_TIME_ACTIONS } from '@context/actionsConst';
+import { CONFIG_ACTIONS } from '@context/actionsConst';
 import { getLocationFromGeoLocation } from '@api/location';
 import { initialPrayTimeState } from '@api/prayTimes';
 
@@ -9,7 +10,7 @@ export default function useAction() {
   const { globalState, dispatch } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(false);
   const { prayTime } = globalState;
-  const { location = {} } = prayTime;
+  const { location } = prayTime;
 
   React.useEffect(()=> {
     initPrayTime();
@@ -39,7 +40,15 @@ export default function useAction() {
     }
   };
 
+  const _changeLocation = () => {
+    dispatch({
+      data: {},
+      type: CONFIG_ACTIONS.SET_BOTTOM_SHEET.SHOW_LOCATION_SETTING,
+    });
+  };
+
   return {
+    _changeLocation,
     _chooseLocation,
     isLoading,
     location,
