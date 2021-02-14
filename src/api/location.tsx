@@ -34,7 +34,7 @@ export const getLocationFromGeoLocation = async (): Promise<IGetLocation>=> {
       if (!response?.success) throw response;
       location = response.data;
       status = true;
-      message = 'Berhasil Menemukan Alamat Anda';
+      message = 'Berhasil Menemukan Lokasi Anda';
     } catch (error) {
       message = error.message;
     }
@@ -47,6 +47,19 @@ export const getLocationFromGeoLocation = async (): Promise<IGetLocation>=> {
     message: message,
     success: status,
   };
+};
+
+export const setDataCoords = async (title: string) => {
+  const find = CITIES.find(item => title === item.city);
+  const newCity: ILocation = {
+    coords: [find.latitude, find.longitude],
+    title: find.city,
+  };
+  await setLocationToLocalStorage(newCity);
+};
+
+export const setLocationToLocalStorage = async (value: ILocation) => {
+  return await STORAGE.setStorage(STORAGE.DB.LOCATION, value);
 };
 
 export const getGeoLocation = (options = {}) => {
@@ -71,7 +84,7 @@ export const getGeoLocation = (options = {}) => {
 };
 
 export const handlePosition = async (position): Promise<IGetLocation> => {
-  let location: ILocation = {coords:[0, 0], title:''};
+  let location: ILocation = { coords: [0, 0], title:''};
   let message = '';
   let status = false;
 
@@ -85,7 +98,7 @@ export const handlePosition = async (position): Promise<IGetLocation> => {
       coords: coords,
       title: city,
     };
-    await STORAGE.setStorage(STORAGE.DB.LOCATION, location);
+    await setLocationToLocalStorage(location);
     status = true;
     message = 'sukses';
   } catch (error) {
@@ -147,4 +160,15 @@ const getCityFromCoords = async ([lat, long]) => {
     }
     return (Math.round(distance, 2));
   }
+};
+
+export const getOptionAllCity = () => {
+  const country = CITIES.map(item => {
+    return {
+      title: item.city,
+      value: item.city,
+    };
+  });
+
+  return country;
 };

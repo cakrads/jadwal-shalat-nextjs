@@ -5,7 +5,7 @@ import Button from '@components/atomic/Button';
 const SubHeader = (): JSX.Element => {
 
   const {
-    isLoading, location, _chooseLocation,
+    isLoading, location, _chooseLocation, _changeLocation
   } = useAction();
 
   const LocationFound = ()=> {
@@ -15,7 +15,7 @@ const SubHeader = (): JSX.Element => {
           <marquee> {location.title} </marquee>
         </div>
         <div className="flex-shrink-0">
-          <Button border="pill" isLoading={isLoading} onClick={_chooseLocation} size="sm"> Ganti Lokasi </Button>
+          <Button border="pill" isLoading={isLoading} onClick={_changeLocation} size="sm"> Ganti Lokasi </Button>
         </div>
       </>
     );

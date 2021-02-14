@@ -27,6 +27,11 @@ export default function reducer(state = initialConfig, action: any) {
         ...state,
         bottomSheet: BOTTOM_SHEET_TYPE.PRAY_SETTING,
       };
+    case SET_BOTTOM_SHEET.SHOW_LOCATION_SETTING:
+      return {
+        ...state,
+        bottomSheet: BOTTOM_SHEET_TYPE.LOCATION_SETTING,
+      };
     default:
       return state;
   }

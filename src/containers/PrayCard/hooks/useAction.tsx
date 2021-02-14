@@ -6,14 +6,11 @@ import { DATE, hijrDate } from '@helpers/index';
 
 export default function useAction() {
   const { globalState } = useContext(AppContext);
-  const { prayTime = {} } = globalState;
+  const { prayTime } = globalState;
 
   const DEFAULT = {
-    calcMethod: {
-      name:'',
-      value: '',
-    },
-    pray: {time:'', title:'', },
+    calcMethod: { name:'', value: '', },
+    pray: { time:'', title:'', },
     timeLeft: '',
     today:'',
     todayHijr:'',
