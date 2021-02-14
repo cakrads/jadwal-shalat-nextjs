@@ -24,7 +24,7 @@ export const getPrayTimesByDate = async (date): Promise<{}> => {
 export const getNextPrayTime = async (): Promise<INextPrayTime> => {
   try {
     const today = DATE.today();
-    const tomorrow = DATE.addDay(1, false);
+    const tomorrow = DATE.addDay(1, true);
     const now = DATE.now();
 
     const todayPrayTime = await getPrayTimesByDate(today);
@@ -40,9 +40,8 @@ export const getNextPrayTime = async (): Promise<INextPrayTime> => {
         nextPrayTime = {[allKey[index + 1]]: todayPrayTime[allKey[index + 1]]};
     });
     if (!Object.keys(nextPrayTime).length) {
-      nextPrayTime = tomorrowPrayTime['subuh'];
+      nextPrayTime = {'imsak': tomorrowPrayTime['imsak']};
     }
-
     const key: any = Object.keys(nextPrayTime);
     return {
       time: nextPrayTime[key],
@@ -84,8 +83,12 @@ const checkIsValueBetween = (now, before, after) => {
 };
 
 export const getTimeleftToPray = (nextPrayTime: INextPrayTime) => {
-  const unixPrayTime = DATE.hourToTimestamp(nextPrayTime.time);
-  const timeLeft: string = DATE.howLongFromNow(unixPrayTime);
+  let unixPrayTime = DATE.hourToTimestamp(nextPrayTime.time);
+  let timeLeft: string = DATE.howLongFromNow(unixPrayTime);
+  if (timeLeft.includes('lalu')) {
+    unixPrayTime = unixPrayTime + 24 * 3600;
+    timeLeft = DATE.howLongFromNow(unixPrayTime);
+  }
   const tmp = timeLeft.split(' ');
   return `${tmp[1]} ${tmp[2] || ''} menuju ${nextPrayTime.title}`;
 };
