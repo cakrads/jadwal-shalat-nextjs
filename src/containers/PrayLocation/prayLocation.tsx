@@ -5,14 +5,14 @@ import Button from '@components/atomic/Button';
 const SubHeader = (): JSX.Element => {
 
   const {
-    isLoading, location, _chooseLocation, _changeLocation
+    isLoading, isLocationSet, locationTitle, _chooseLocation, _changeLocation
   } = useAction();
 
   const LocationFound = ()=> {
     return (
       <>
         <div className="py-1 w-full">
-          <marquee> {location.title} </marquee>
+          <marquee> {locationTitle} </marquee>
         </div>
         <div className="flex-shrink-0">
           <Button border="pill" isLoading={isLoading} onClick={_changeLocation} size="sm"> Ganti Lokasi </Button>
@@ -32,9 +32,9 @@ const SubHeader = (): JSX.Element => {
   return (
     <div className="flex space-x-4 items-center justify-between mb-3 h-10">
       {
-        !location?.title || location?.title === '' || location?.coords?.length === 0
-          ? <LocationMiss/>
-          : <LocationFound/>
+        isLocationSet
+          ? <LocationFound/>
+          : <LocationMiss/>
       }
     </div>
   );

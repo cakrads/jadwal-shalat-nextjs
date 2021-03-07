@@ -10,6 +10,7 @@ export default function useAction() {
   const [isLoading, setIsLoading] = useState(false);
   const { prayTime } = globalState;
   const { location } = prayTime;
+  const locationTitle = location?.title || '';
 
   React.useEffect(()=> {
     initPrayTime();
@@ -27,7 +28,7 @@ export default function useAction() {
     setIsLoading(true);
 
     try {
-      if (location?.title === '' || !location?.title) {
+      if (locationTitle !== '') {
         const response: any = await getLocationFromGeoLocation();
         await initPrayTime();
         alert(response.message);
@@ -46,10 +47,15 @@ export default function useAction() {
     });
   };
 
+  const isLocationSet = () => {
+    return locationTitle !== '' && location?.coords?.length > 0;
+  };
+
   return {
     _changeLocation,
     _chooseLocation,
     isLoading,
-    location,
+    isLocationSet: isLocationSet(),
+    locationTitle,
   };
 }
