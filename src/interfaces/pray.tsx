@@ -9,6 +9,7 @@ export interface IPrayCard {
 export interface INextPrayTime {
   title: string,
   time: string,
+  value: number,
 }
 
 export interface IPrayTable {

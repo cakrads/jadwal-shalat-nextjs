@@ -29,8 +29,8 @@ export const getNextPrayTime = async (): Promise<INextPrayTime> => {
 
     const todayPrayTime = await getPrayTimesByDate(today);
     const tomorrowPrayTime = await getPrayTimesByDate(tomorrow);
-
     let nextPrayTime = {};
+    let useTomorrowPrayTime = false;
     const allKey = Object.keys(todayPrayTime);
     allKey.forEach((key, index) => {
       if (!todayPrayTime[allKey[index + 1]]) return;
@@ -41,16 +41,20 @@ export const getNextPrayTime = async (): Promise<INextPrayTime> => {
     });
     if (!Object.keys(nextPrayTime).length) {
       nextPrayTime = {'imsak': tomorrowPrayTime['imsak']};
+      useTomorrowPrayTime = true;
     }
     const key: any = Object.keys(nextPrayTime);
+    const value = DATE.hourToTimestamp(nextPrayTime[key], useTomorrowPrayTime);
     return {
       time: nextPrayTime[key],
       title: text.capitalize(key[0]),
+      value,
     };
   } catch (error) {
     return {
       time: '00:00',
       title: '-----',
+      value: 0,
     };
   }
 };

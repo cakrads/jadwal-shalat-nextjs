@@ -41,8 +41,12 @@ export const format = (value, date: any = today()) => {
   return dayjs(date).locale(localeId).format(value);
 };
 
-export const hourToTimestamp = (time) => {
-  const date = dayjs(today()).format('YYYY-MM-DD');
+export const hourToTimestamp = (time, useTomorrowPrayTime = false) => {
+  let date = dayjs(today()).format('YYYY-MM-DD');
+  if (useTomorrowPrayTime) {
+    date = dayjs(today()).add(1, 'day').format('YYYY-MM-DD');
+  }
+
   return dayjs(`${date} ${time}:00`).unix();
 };
 
