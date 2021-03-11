@@ -15,10 +15,31 @@ export const getPrayTimesByDate = async (date): Promise<{}> => {
     prayTimes.setMethod(calcMethod.data?.value);
     const times = prayTimes.getTimes(date, location.data?.coords || [], +7);
 
+    // return dummyGetPrayTimeByDate();
     return times;
   } catch (error) {
     return error;
   }
+};
+export const dummyGetPrayTimeByDate = () => {
+  const h = '17';
+  const m = (i: number) => {
+    const min = 43;
+    const calt = min + i;
+    return calt < 10 ? `0${calt}` : calt;
+  };
+
+  return {
+    asr: `${h}:${m(4)}`,
+    dhuhr: `${h}:${m(3)}`,
+    fajr: `${h}:${m(1)}`,
+    imsak: `${h}:${m(0)}`,
+    isha: `${h}:${m(7)}`,
+    maghrib: `${h}:${m(6)}`,
+    midnight: `${h}:${m(8)}`,
+    sunrise: `${h}:${m(2)}`,
+    sunset: `${h}:${m(5)}`,
+  };
 };
 
 export const getNextPrayTime = async (): Promise<INextPrayTime> => {
@@ -83,7 +104,7 @@ export const getSchedulePrayByDate = async (date, isToday): Promise<IPrayTable> 
 };
 
 const checkIsValueBetween = (now, before, after) => {
-  return before < now && now <= after;
+  return before <= now && now < after;
 };
 
 export const getTimeleftToPray = (nextPrayTime: INextPrayTime) => {
