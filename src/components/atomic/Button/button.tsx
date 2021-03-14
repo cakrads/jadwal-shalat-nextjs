@@ -11,6 +11,7 @@ const Button = (props): JSX.Element => {
     disabled = false,
     className = '',
     isLoading = false,
+    hidden = false,
   } = props;
 
   const btnStyle = {
@@ -30,6 +31,7 @@ const Button = (props): JSX.Element => {
   };
 
   const btnBlock = block ? 'w-full' : '';
+  const btnHidden = hidden ? 'hidden' : '';
 
   const LoadingIcon = ()=>{
     return (
@@ -37,9 +39,18 @@ const Button = (props): JSX.Element => {
     );
   };
 
+  const styles = `
+    ${btnStyle[type]} 
+    ${btnSize[size]} 
+    ${btnBorder[border]} 
+    ${btnBlock} 
+    ${btnHidden}
+    ${className}
+  `;
+
   return (
     <button
-      className={`${btnStyle[type]} ${btnSize[size]} ${btnBorder[border]} ${btnBlock} ${className}`}
+      className={styles}
       disabled={disabled || isLoading}
       onClick={props.onClick}
     >
