@@ -1,5 +1,5 @@
 import React from 'react';
-import useRepository from './hooks/useRepository';
+import useAction from './hooks/useAction';
 import BottomSheet from '@components/molecules/BottomSheet';
 import PraySetting from '@containers/PraySetting';
 import LocationSetting from '@containers/LocationSetting';
@@ -7,7 +7,7 @@ import { BOTTOM_SHEET_TYPE } from '@context/actionsConst';
 
 const BottomSheetContainer = (): JSX.Element => {
 
-  const { isOpen, onClose, containerType } = useRepository();
+  const { isOpen, onClose, containerType } = useAction();
 
   const _renderBottomSheetContainer = () => {
     if (containerType === BOTTOM_SHEET_TYPE.PRAY_SETTING) {
@@ -20,14 +20,12 @@ const BottomSheetContainer = (): JSX.Element => {
   };
 
   return (
-    <>
-      <BottomSheet
-        isOpen={isOpen}
-        onClose={onClose}
-      >
-        {_renderBottomSheetContainer()}
-      </BottomSheet>
-    </>
+    <BottomSheet
+      isOpen={isOpen}
+      onClose={onClose}
+    >
+      {_renderBottomSheetContainer()}
+    </BottomSheet>
   );
 };
 

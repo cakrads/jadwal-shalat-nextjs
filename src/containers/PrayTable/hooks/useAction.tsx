@@ -5,7 +5,7 @@ import { getSchedulePrayByDate } from '@api/prayTimes';
 import { DATE } from '@helpers/index';
 
 
-export default function useAction() {
+function useAction() {
   const { globalState } = useContext(AppContext);
   const { prayTime = {} } = globalState;
 
@@ -45,3 +45,5 @@ export default function useAction() {
     onChangeIndex: _changeIndex,
   };
 }
+
+export default useAction;

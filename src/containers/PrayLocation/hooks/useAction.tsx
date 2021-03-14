@@ -5,7 +5,7 @@ import { getLocationFromGeoLocation } from '@api/location';
 import { initialPrayTimeState } from '@api/prayTimes';
 
 
-export default function useAction() {
+function useAction() {
   const { globalState, dispatch } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(false);
   const { prayTime } = globalState;
@@ -59,3 +59,5 @@ export default function useAction() {
     locationTitle,
   };
 }
+
+export default useAction;

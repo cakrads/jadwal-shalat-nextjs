@@ -4,7 +4,7 @@ import { initialPrayTimeState } from '@api/prayTimes';
 import { setDataCalcMethod } from '@api/calcMethod';
 import { PRAY_TIME_ACTIONS } from '@context/actionsConst';
 
-export default function useAction() {
+function useAction() {
   const { globalState, dispatch } = useContext(AppContext);
   const { config, prayTime } = globalState;
 
@@ -40,3 +40,5 @@ export default function useAction() {
     setCalcMethod,
   };
 }
+
+export default useAction;

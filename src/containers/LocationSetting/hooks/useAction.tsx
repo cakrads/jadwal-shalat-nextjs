@@ -4,7 +4,7 @@ import { initialPrayTimeState } from '@api/prayTimes';
 import { getLocationFromGeoLocation, setDataCoords, getOptionAllCity } from '@api/location';
 import { PRAY_TIME_ACTIONS, CONFIG_ACTIONS } from '@context/actionsConst';
 
-export default function useAction() {
+function useAction() {
   const { globalState, dispatch } = useContext(AppContext);
   const { prayTime } = globalState;
   const countyOptions = getOptionAllCity();
@@ -63,3 +63,5 @@ export default function useAction() {
     setNewCity,
   };
 }
+
+export default useAction;

@@ -10,7 +10,7 @@ export default function useAction() {
 
   const DEFAULT = {
     calcMethod: { name:'', value: '', },
-    pray: { time:'', title:'', },
+    pray: { time:'', title:'', value: 0 },
     timeLeft: '',
     today:'',
     todayHijr:'',
