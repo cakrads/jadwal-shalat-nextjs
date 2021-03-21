@@ -158,7 +158,7 @@ const getCityFromCoords = async ([lat, long]) => {
       case 'Mi': break;
       case 'Km': distance = distance * 1.609344;
     }
-    return (Math.round(distance, 2));
+    return (Math.round(distance));
   }
 };
 

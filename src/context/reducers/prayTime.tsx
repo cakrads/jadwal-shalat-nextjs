@@ -13,6 +13,7 @@ export const initialPrayTime = {
   nextPrayTime: {
     time: '00:00',
     title: '----',
+    value: 0,
   },
 };
 

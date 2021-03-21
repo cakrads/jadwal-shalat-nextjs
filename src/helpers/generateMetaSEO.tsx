@@ -1,4 +1,4 @@
-import { IMetaSEO } from '@interfaces/metaSEO';
+import { IMetaSEO } from '@interfaces/config';
 
 export const generateMetaSEO = (meta: IMetaSEO) =>{
   const { title, description } = meta;

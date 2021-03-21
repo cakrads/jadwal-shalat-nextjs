@@ -12,7 +12,7 @@ const SubHeader = (): JSX.Element => {
     return (
       <>
         <div className="py-1 w-full">
-          <marquee> {locationTitle} </marquee>
+          <div> {locationTitle} </div>
         </div>
         <div className="flex-shrink-0">
           <Button border="pill" isLoading={isLoading} onClick={_changeLocation} size="sm"> Ganti Lokasi </Button>
