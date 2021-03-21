@@ -28,11 +28,9 @@ function useAction() {
     setIsLoading(true);
 
     try {
-      if (locationTitle !== '') {
-        const response: any = await getLocationFromGeoLocation();
-        await initPrayTime();
-        alert(response.message);
-      }
+      const response: any = await getLocationFromGeoLocation();
+      await initPrayTime();
+      alert(response.message);
     } catch (error) {
       alert(error.message);
     } finally {
