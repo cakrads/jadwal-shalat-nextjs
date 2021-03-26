@@ -55,10 +55,10 @@ function PrayTimes(method) {
     // Time Names
     timeNames = {
       imsak: 'Imsak',
-      fajr: 'Fajr',
-      sunrise: 'Sunrise',
-      dhuhr: 'Dhuhr',
-      asr: 'Asr',
+      fajr: 'Subuh',
+      sunrise: 'Matahari Terbit',
+      dhuhr: 'Zuhur',
+      asr: 'Ashar',
       sunset: 'Sunset',
       maghrib: 'Maghrib',
       isha: 'Isha',
@@ -368,12 +368,14 @@ function PrayTimes(method) {
       times = this.adjustTimes(times);
 
       // add midnight time
-      times.midnight = (setting.midnight === 'Jafari') ?
-        times.sunset + this.timeDiff(times.sunset, times.fajr) / 2 :
-        times.sunset + this.timeDiff(times.sunset, times.sunrise) / 2;
+      // times.midnight = (setting.midnight === 'Jafari') ?
+      //   times.sunset + this.timeDiff(times.sunset, times.fajr) / 2 :
+      //   times.sunset + this.timeDiff(times.sunset, times.sunrise) / 2;
 
       times = this.tuneTimes(times);
-      return this.modifyFormats(times);
+      times = this.modifyFormats(times);
+      delete times.sunset;
+      return times;
     },
 
 
