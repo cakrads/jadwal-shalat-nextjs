@@ -10,8 +10,8 @@ const Home = (props: any): JSX.Element => {
     <MainLayout {...props}>
       <ShalatLocation />
       <ShalatCardContainer />
-      <ShalatTable />
       <Notification />
+      <ShalatTable />
     </MainLayout>
   );
 };

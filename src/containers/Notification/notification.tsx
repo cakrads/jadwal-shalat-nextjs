@@ -19,11 +19,10 @@ const Notification = (): JSX.Element => {
 
   useTimerWorker({ onExecute: startNotification, });
 
+  if (isGranted) return <></>;
+
   return (
-    <>
-      <Button block hidden={isGranted} onClick={_askPermission}> Nyalakan Notifikasi </Button>
-      {/* <Button block onClick={startNotification}> Test Send Notifikasi </Button> */}
-    </>
+    <Button block className="mb-5" onClick={_askPermission}> INGATKAN SAYA! </Button>
   );
 };
 

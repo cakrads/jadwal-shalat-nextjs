@@ -92,7 +92,7 @@ export const getSchedulePrayByDate = async (date, isToday): Promise<IPrayTable> 
     return {
       isActive: isActive,
       time: todayPrayTime[key],
-      title: text.capitalize(key),
+      title: prayTitle(key),
     };
   });
 
@@ -130,4 +130,18 @@ export const initialPrayTimeState = async () => {
     location: location.data,
     nextPrayTime,
   };
+};
+
+export const prayTitle = (key)=>{
+  const title = {
+    'asr':'Asar',
+    'dhuhr':'Zuhur',
+    'fajr':'Subuh',
+    'imsak':'Imsak',
+    'isha':'Isya',
+    'maghrib':'Magrib',
+    'sunrise':'Dhuha',
+  };
+
+  return title[key];
 };

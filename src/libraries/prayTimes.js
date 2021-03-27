@@ -58,10 +58,10 @@ function PrayTimes(method) {
       fajr: 'Subuh',
       sunrise: 'Matahari Terbit',
       dhuhr: 'Zuhur',
-      asr: 'Ashar',
+      asr: 'Asar',
       sunset: 'Sunset',
       maghrib: 'Maghrib',
-      isha: 'Isha',
+      isha: 'Isya',
       midnight: 'Midnight'
     },
 
