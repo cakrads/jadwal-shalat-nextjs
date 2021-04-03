@@ -16,10 +16,32 @@ export const MainLayout: React.FC = (props: IMainLayout) => {
     <Fragment>
       <Head>
         <title>{title}</title>
-        <link href="/favicon.ico" rel="icon" />
         <meta content={description} name="description"/>
+        <meta content="Keywords" name="keywords" />
+
         <meta charSet="utf-8" />
-        <meta content="initial-scale=1.0, width=device-width" name="viewport" />
+        <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
+        <meta
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+          name="viewport"
+        />
+
+        <link href="/manifest.json" rel="manifest" />
+        <link href="/favicon.ico" rel="icon" />
+        <link
+          href="/images/favicon-16x16.png"
+          rel="icon"
+          sizes="16x16"
+          type="image/png"
+        />
+        <link
+          href="/images/favicon-32x32.png"
+          rel="icon"
+          sizes="32x32"
+          type="image/png"
+        />
+        <link href="/images/apple-icon.png" rel="apple-touch-icon" />
+        <meta content="#317EFB" name="theme-color" />
       </Head>
 
       <div className="overflow-hidden relative">

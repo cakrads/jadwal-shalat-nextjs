@@ -5,7 +5,11 @@ import { DATE, text } from '@helpers/index';
 import { getCalcMethodeFromStorage } from '@api/calcMethod';
 import { INextPrayTime, IPrayTable } from '@interfaces/pray';
 
-export const getPrayTimesByDate = async (date): Promise<{}> => {
+interface IPrayTitle {
+  asr, dhuhr, fajr, imsak, isha, maghrib, sunrise
+}
+
+export const getPrayTimesByDate = async (date): Promise<IPrayTitle> => {
   try {
     const calcMethod = await getCalcMethodeFromStorage();
     const location = await getLocationFromStorage();
@@ -52,7 +56,7 @@ export const getNextPrayTime = async (): Promise<INextPrayTime> => {
     const todayPrayTime = await getPrayTimesByDate(today);
     const tomorrowPrayTime = await getPrayTimesByDate(tomorrow);
     let nextPrayTime = {};
-    let useTomorrowPrayTime = false;
+    let incDay = 0;
     const allKey = Object.keys(todayPrayTime);
     allKey.forEach((key, index) => {
       if (!todayPrayTime[allKey[index + 1]]) return;
@@ -63,13 +67,13 @@ export const getNextPrayTime = async (): Promise<INextPrayTime> => {
     });
     if (!Object.keys(nextPrayTime).length) {
       nextPrayTime = {'imsak': tomorrowPrayTime['imsak']};
-      useTomorrowPrayTime = true;
+      incDay = 1;
     }
     const key: any = Object.keys(nextPrayTime);
-    const value = DATE.hourToTimestamp(nextPrayTime[key], useTomorrowPrayTime);
+    const value = DATE.hourToTimestamp(nextPrayTime[key], incDay);
     return {
       time: nextPrayTime[key],
-      title: text.capitalize(key[0]),
+      title: prayTitle(key[0]),
       value,
     };
   } catch (error) {
@@ -144,4 +148,30 @@ export const prayTitle = (key)=>{
   };
 
   return title[key];
+};
+
+export const getLongPrayTimes = async (duration = 7) => {
+
+  const prayTimes = [];
+
+  let daysTo = 0;
+  while (daysTo < duration) {
+    const date = DATE.addDay(daysTo, true);
+    const prayTime = await getPrayTimesByDate(date);
+
+    const allKey = Object.keys(prayTime);
+    const schedule = allKey.map((key) => {
+      const time = DATE.hourToTimestamp(prayTime[key], daysTo);
+      return {
+        date: DATE.format('DD - MM - YYYY', time),
+        title: prayTitle(key),
+        time: time,
+      };
+    });
+    prayTimes.push(schedule);
+
+    daysTo += 1;
+  }
+
+  return prayTimes;
 };
