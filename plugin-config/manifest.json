@@ -1,19 +1,30 @@
 {
   "name": "Jadwal Sholatku",
-  "version": "1.0",
-  "description": "Plugin Jadwal Shalat",
+  "version": "1.0.0",
+  "description": "Chrome extenstion yang akan mengingatkan kita jadwal shalat",
   "author": "cakra.ds@gmail.com",
-  "action": {
+  "manifest_version": 2,
+  "browser_action": {
     "default_popup": "index.html",
     "default_icon": {
       "36": "images/android-icon-36x36.png",
       "48": "images/android-icon-48x48.png",
       "72": "images/android-icon-72x72.png",
       "144": "images/android-icon-144x144.png"
-    }
+    },
+    "default_title": "Jadwal Sholatku"
   },
-  "options_page": "index.html",
-  "manifest_version": 3,
+  "background": {
+    "scripts": [
+      "bg-worker.js"
+    ]
+  },
+  "permissions": [
+    "alarms",
+    "notifications",
+    "geolocation"
+  ],
+  "options_page": "option.html",
   "icons": {
     "36": "images/android-icon-36x36.png",
     "48": "images/android-icon-48x48.png",

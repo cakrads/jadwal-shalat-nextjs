@@ -8,7 +8,7 @@ const Notification = (): JSX.Element => {
   if (typeof window === 'undefined')
     return <></>;
 
-  const { startAudio }: any = useAudio('./Alarm.mp3');
+  const { startAudio }: any = useAudio('./sounds/mecca.mp3');
   const { _askPermission, _showNotification, isGranted, } = useNotification();
 
   const startNotification = (nowPrayTitle = '') => {

@@ -54,7 +54,7 @@ const useNotification = () => {
           body: option.body || 'Ayo segera shalat.',
           icon: 'https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
           silent: true,
-          sound: './Alarm.mp3', // not support all browser -_-
+          sound: './sounds/mecca.mp3', // not support all browser -_-
           ...option,
         };
         const result = await new Notification(title, options);
