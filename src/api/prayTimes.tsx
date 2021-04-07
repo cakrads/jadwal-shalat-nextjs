@@ -1,8 +1,9 @@
 /* eslint-disable sort-keys */
 import prayTimes from '@libraries/prayTimes';
 import { getLocationFromStorage } from './location';
-import { DATE, text } from '@helpers/index';
+import { DATE } from '@helpers/index';
 import { getCalcMethodeFromStorage } from '@api/calcMethod';
+import { initAlarm } from '@api/alarm-plugin';
 import { INextPrayTime, IPrayTable } from '@interfaces/pray';
 
 interface IPrayTitle {
@@ -86,7 +87,6 @@ export const getNextPrayTime = async (): Promise<INextPrayTime> => {
 };
 
 export const getSchedulePrayByDate = async (date, isToday): Promise<IPrayTable> => {
-
   const todayPrayTime = await getPrayTimesByDate(date);
   const nextPrayTime = await getNextPrayTime();
 
@@ -124,10 +124,11 @@ export const getTimeleftToPray = (nextPrayTime: INextPrayTime) => {
 };
 
 export const initialPrayTimeState = async () => {
-
   const calcMethod = await getCalcMethodeFromStorage();
   const location = await getLocationFromStorage();
   const nextPrayTime = await getNextPrayTime();
+  const oneWeekPrayTime = await getLongPrayTimes(7);
+  initAlarm(oneWeekPrayTime);
 
   return {
     calcMethod: calcMethod.data,
@@ -136,7 +137,7 @@ export const initialPrayTimeState = async () => {
   };
 };
 
-export const prayTitle = (key)=>{
+export const prayTitle = (key) => {
   const title = {
     'asr':'Asar',
     'dhuhr':'Zuhur',
@@ -144,16 +145,13 @@ export const prayTitle = (key)=>{
     'imsak':'Imsak',
     'isha':'Isya',
     'maghrib':'Magrib',
-    'sunrise':'Dhuha',
+    'sunrise':'Matahari Terbit',
   };
-
   return title[key];
 };
 
 export const getLongPrayTimes = async (duration = 7) => {
-
   const prayTimes = [];
-
   let daysTo = 0;
   while (daysTo < duration) {
     const date = DATE.addDay(daysTo, true);
@@ -169,7 +167,6 @@ export const getLongPrayTimes = async (duration = 7) => {
       };
     });
     prayTimes.push(schedule);
-
     daysTo += 1;
   }
 
