@@ -38,15 +38,15 @@ chrome.notifications.onButtonClicked.addListener(function () {
 const showNotification = (data) => {
   chrome.notifications.create(data.title, {
     buttons: [
-      { 'title': 'Segera Shalat', },
+      { 'title': data.playAdzan ? 'Segera Shalat' : 'Aamiin', },
       { 'title': 'Mute', }
     ],
     'iconUrl': './images/android-icon-144x144.png',
     'message': data.message,
-    'silent': true,
+    'silent': data.playAdzan,
     'title': data.title,
     'type': 'basic',
-  }, function () { ring(); });
+  }, function () { if (data.playAdzan) ring(); });
 };
 
 const adzanAudio = new Audio();
@@ -86,16 +86,17 @@ const clearAlarm = () => {
 
 const remindPrayTime = (title) => {
   const newTitle = title.split('|')[0];
-
   if (newTitle === 'Matahari Terbit ' || newTitle === 'Imsak ') {
     return {
       message: 'Bismillah, Ya Allah, dengan kehendak-Mu, sesungguhnya hamba memohon kelancaran atas kegiatan-kegiatan yang hamba lakukan hari ini ya Allah, Ridhoilah kegiatan-kegiatan hamba y Allah, Aamiin',
+      playAdzan: false,
       title: newTitle,
     };
   }
 
   return {
     message: 'Sudah Masuk waktu shalat ' + newTitle + '. Ayo segera shalat.',
+    playAdzan: true,
     title: `Memasuki Waktu Shalat ${newTitle}`,
   };
 };
