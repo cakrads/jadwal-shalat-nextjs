@@ -2,7 +2,7 @@
 Jadwal Shalatku is Application used for remind us about Pray Times. This Application work in Chrome Extension (Plugin) and PWA (on Development)  
 
 ## Screenshoot
-[(https://raw.githubusercontent.com/cakrads/jadwal-shalat-nextjs/develop/public/images/images-1.png)](https://raw.githubusercontent.com/cakrads/jadwal-shalat-nextjs/develop/public/images/images-1.png)
+![N|Solid](https://github.com/cakrads/jadwal-shalat-nextjs/blob/develop/public/images/images-1.png?raw=true)
 
 ## Fitur
 There's some feature in this App:
