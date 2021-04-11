@@ -8,8 +8,10 @@ export const initAlarm = (oneWeekPrayTime) => {
 };
 
 const sendToExtension = (payload) => {
-  const port = chrome.extension.connect({ name: 'jadwalShalatkuPopupCommunication' });
-  port.postMessage(payload);
+  if (chrome.extension) {
+    const port = chrome.extension.connect({ name: 'jadwalShalatkuPopupCommunication' });
+    port.postMessage(payload);
+  }
 };
 
 // only work in manifest v3

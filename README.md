@@ -1,32 +1,84 @@
-# NextJS Typescript Boilerplate
+# Jadwal Shalatku - Chrome Extension and PWA
+Jadwal Shalatku is Application used for remind us about Pray Times. This Application work in Chrome Extension (Plugin) and PWA (on Development)  
 
-Bootstrap a developer-friendly NextJS app configured with:
+## Screenshoot
+[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
 
-- [Typescript](https://www.typescriptlang.org/)
-- Linting with [ESLint](https://eslint.org/)
-- Formatting with [Prettier](https://prettier.io/)
-- Linting, typechecking and formatting on by default using [`husky`](https://github.com/typicode/husky) for commit hooks
-- Testing with [Jest](https://jestjs.io/) and [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro)
+## Fitur
+There's some feature in this App:
+#### Fitur pada Chrome Extension
+- Show Pray Times base on Location
+- Show All Praytime day by day
+- Location Selection
+- Selection Calculation Type
+- Reminder Praytime with Adzan (will work in manifest versi 2)
 
-## Deploy your own
+#### Fitur pada PWA
+- Show Pray Times base on Location
+- Show All Praytime day by day
+- Location Selection
+- Selection Calculation Type
+- Reminder Praytime with Adzan (on Development)
 
-Deploy the example using [Vercel](https://vercel.com):
+## Tech Stack
+#### Core
+- Next.js (React.js) - Core system
+- React Hooks - use in Functional Component
+- useContext - use for State management 
+- [Tailwind](https://tailwindcss.com/) - CSS Framework
+- TypeScript
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/vercel/next.js/tree/canary/examples/with-typescript-eslint-jest)
+#### Additional Flavour
+- Next-PWA (Workbox) - to create PWA in Next.js
+- [Notification Web API](https://developer.mozilla.org/en-US/docs/Web/API/Notification)
+- [Geolocation Web API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
+- [Chrome Alarm](https://developer.chrome.com/docs/extensions/reference/alarms/), this use in Extension
+- [Chrome Notification](https://developer.chrome.com/docs/extensions/reference/notifications/), this use in Extension
 
-## How to use
+#### Design and Terminology
+- Component Structure with [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/)
+- [Mobile First Approach](https://medium.com/@Vincentxia77/what-is-mobile-first-design-why-its-important-how-to-make-it-7d3cf2e29d00)
+- Desing with [Glass Morphism](https://uxdesign.cc/glassmorphism-in-user-interfaces-1f39bb1308c9)
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+## Installation and Run in Browser
+This App requires [Node.js](https://nodejs.org/) v10+ to run.
+Install the dependencies and devDependencies and start the server.
 
+Installation
 ```bash
-npx create-next-app --example with-typescript-eslint-jest with-typescript-eslint-jest-app
-# or
-yarn create next-app --example with-typescript-eslint-jest with-typescript-eslint-jest-app
+npm i
 ```
 
+Run
+```bash
+npm run start
+```
+
+#### Building
+Build Chrome Plugin (manifest v2, with Adzan)
+```bash
+npm run ex-extension
+```
+
+Build Chrome Extension (manifest v3, only sound notification)
+```bash
+npm run ex-extension-v3
+```
+
+Build PWA
+```bash
+npm run export
+```
+
+#### Installation Extenstion
+Do this step to install Chrome Extension
+1. extract chrome-extension.zip. 
+2. Open Chrome browser and type ```chrome://extensions/```. 
+3. In top right, Switch Developer on Developer Mode
+4. Click ```Load Unpack``` and Choose chrome-extension folder
+
+## Deploy
 Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
 
-
-
-Logo Created in:
-https://editor.freelogodesign.org/
+## Additional
+Logo Created in https://editor.freelogodesign.org/
